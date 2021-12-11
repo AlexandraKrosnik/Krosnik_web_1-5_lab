@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7</title>
+    <style>
+        body {
+            height: 100vh;
+            background-color: gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .areaForGame {
+            position: relative;
+            background-color: darkgray;
+            width: 90%;
+            height: 90%;
+        }
+        button {
+            height: 50px;
+            width: 250px;
+            position: absolute;
+            top: 50%;
+            left: 45%;
+            background-color: blueviolet;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="areaForGame">
+    <button>Click me</button>
+</div>
+</body>
+<script>
+    function random(min, max) {
+        return Math.floor(min + Math.random() * (max + 1 - min));
+    }
+
+    document.querySelector('button').addEventListener('mouseenter',()=>{
+        document.querySelector('button').style.top=`${random(0,85)}%`;
+        document.querySelector('button').style.left=`${random(0,85)}%`;
+    })
+</script>
+</html>

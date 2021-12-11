@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+</head>
+<body>
+<div class="inputWrapper" style="margin-bottom: 20px">
+    <input type="checkbox" id="item1" class="checkBox" value="mountain@gmail.com">
+    <label for="item1">mountain@gmail.com</label><br/>
+    <input type="checkbox" id="item2" class="checkBox" value="tree@gmail.com">
+    <label for="item2">tree@gmail.com</label><br/>
+    <input type="checkbox" id="item3" class="checkBox" value="world@gmail.com">
+    <label for="item3">world@gmail.com</label><br/>
+    <input type="checkbox" id="item4" class="checkBox" value="cloud@gmail.com">
+    <label for="item4">cloud@gmail.com</label><br/>
+    <input type="checkbox" id="item5" class="checkBox" value="river@gmail.com">
+    <label for="item5">river@gmail.com</label><br/>
+    <input type="checkbox" id="item6" class="checkBox" value="wood@gmail.com">
+    <label for="item6">wood@gmail.com</label><br/>
+    <input type="checkbox" id="item7" class="checkBox" value="field@gmail.com">
+    <label for="item7">field@gmail.com</label><br/>
+    <input type="checkbox" id="item8" class="checkBox" value="snow@gmail.com">
+    <label for="item8">snow@gmail.com</label><br/>
+    <input type="checkbox" id="item9" class="checkBox" value="rain@gmail.com">
+    <label for="item9">rain@gmail.com</label><br/>
+    <input type="checkbox" id="item10" class="checkBox" value="wind@gmail.com">
+    <label for="item10">wind@gmail.com</label><br/>
+</div>
+<div class="emailArea" style="border: 1px solid gray"></div>
+</body>
+<script>
+    function onChecked(e) {
+        document.querySelector('.emailArea').innerHTML += e.target.value + '; ';
+    }
+
+    document.querySelectorAll('.checkBox').forEach(item => item.addEventListener('click', onChecked))
+</script>
+</html>

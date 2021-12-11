@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <script>
+        function table(){
+            let table = document.querySelector('#table');
+            let text = document.getElementById('text').value;
+            let text1 = text.replace(/\n$/g, '').replace(/\n+/g,';').split(';');
+            
+            console.log(text1);   
+            console.log(typeof text1);        
+            let arr = [];
+            for (let i = 0; i < text1.length; i += 8) {   
+                let arr0=  text1[i].split(" ");
+                let arr2= text1[i + 2] +" "+ text1[i + 3];
+                arr.push([arr0[0], arr0[1], text1[i + 1], arr2 , text1[i + 4], text1[i + 5], text1[i + 6], text1[i + 7]]);                
+            }  
+            /*text1.foreach((item)=>{
+                arr.push(item);
+            })  , text1[i + 7] */       
+      console.log(arr);
+            fillTable(table, arr);
+            function fillTable(table, arr)
+            {
+                for (var i = 0; i < arr.length; i++) {
+                    var tr = document.createElement('tr');
+                    tr.className = 'table__row';
+
+                    for (var j = 0 ; j < arr[i].length; j++) {
+                        var td = document.createElement('td');
+                        td.className = 'table__col';
+                        td.innerHTML = arr[i][j];
+                        tr.appendChild(td);
+                    }
+
+                    table.appendChild(tr);
+                }
+            }
+        }
+           
+    </script>
+</head>
+<body>
+    <a href="./index.html" class="button">На головну</a>
+    <h1>Введіть дані</h1>
+    <textarea class="textarea" id="text"></textarea>
+    <button class="button button__task7" onclick="table()">Згенерувати таблицю</button>
+    <table class="table" id="table">
+        <tr class="table__row table__row--head">
+            <th class="table__col">FirstName</th>
+            <th class="table__col">LastName</th>
+            <th class="table__col">Gender</th>
+            <th class="table__col">Address</th>
+            <th class="table__col">BirthDate</th>
+            <th class="table__col">Nickname</th>
+            <th class="table__col">Password</th>
+            <th class="table__col">Email</th>
+        </tr>       
+    </table>
+</body>
+</html>

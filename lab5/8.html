@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper {
+            background-color: gray;
+            height: 800px;
+            width: 800px;
+        }
+
+        .hero {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="hero"></div>
+</div>
+</body>
+<script>
+    let hero = document.querySelector('.hero');
+    const wrapper = document.querySelector('.wrapper');
+
+
+    let limits = {
+        top: wrapper.offsetTop,
+        right: wrapper.offsetWidth + wrapper.offsetLeft - hero.offsetWidth,
+        bottom: wrapper.offsetHeight + wrapper.offsetTop - hero.offsetHeight,
+        left: wrapper.offsetLeft
+    };
+
+    function relocate(newLocation) {
+        hero.style.left = newLocation.x + 'px';
+        hero.style.top = newLocation.y + 'px';
+    }
+
+    function moveAt(e) {
+        let newLocation = {
+            x: e.pageX,
+            y: e.pageY
+        };
+
+        function setRightLimit() {
+            newLocation.x = limits.right - hero.offsetWidth / 2;
+        }
+
+        function setLeftLimit() {
+            newLocation.x = limits.left + hero.offsetWidth / 2;
+        }
+
+        function setBottomLimit() {
+            newLocation.y = limits.bottom - hero.offsetHeight / 2;
+        }
+
+        function setTopLimit() {
+            newLocation.y = limits.top + hero.offsetHeight / 2;
+        }
+
+        function setCoordinateX(e) {
+            newLocation.x = e.pageX - hero.offsetWidth / 2;
+        }
+
+        function setCoordinateY(e) {
+            newLocation.y = e.pageY - hero.offsetHeight / 2;
+        }
+
+        function moveX(e) {
+            e.pageX > limits.right  ? setRightLimit()
+                :
+                e.pageX < limits.left + hero.offsetWidth ? setLeftLimit()
+                    :
+                    setCoordinateX(e);
+        }
+
+        function moveY(e) {
+            e.pageY > limits.bottom  ? setBottomLimit()
+                :
+                e.pageY < limits.top + hero.offsetHeight ? setTopLimit()
+                    :
+                    setCoordinateY(e);
+        }
+
+        moveX(e);
+        moveY(e);
+        relocate(newLocation);
+    }
+
+    hero.onmousedown = function (e) {
+        moveAt(e);
+        hero.onmousemove = moveAt;
+        hero.onmouseup = () => {
+            hero.onmousemove = null;
+            hero.onmouseup = null;
+        };
+    };
+
+</script>
+</html>

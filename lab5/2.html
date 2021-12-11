@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+
+<body>
+<p class="progress"></p>
+<button class="nextQuestion" style="margin-bottom: 10px">настпуне завдання</button>
+<div style="margin-bottom: 10px">
+    <span class="expression"></span>
+    <input type="text" class="input">
+    <button class="checkAnswerButton">перевірити</button>
+</div>
+<div></div>
+</body>
+<script>
+
+    function randomInteger(min, max) {
+        return Math.floor(min + Math.random() * (max + 1 - min));
+    }
+
+    function setStatisticLabel(progress, numberOfQuestions) {
+        document.querySelector('.progress')
+            .textContent = `Загальний рахунок ${Math.floor(progress / numberOfQuestions * 100)}% (${progress}
+            правильних відповідей із ${numberOfQuestions})`;
+    }
+
+    function setExpressionLabel(firstMultiplier, secondMultiplier) {
+        document.querySelector('.expression').textContent = `${firstMultiplier} × ${secondMultiplier} =`;
+    }
+
+    function onClickAnswer(e) {
+        document.querySelector('.input').disabled = true;
+        document.querySelector('.nextQuestion').disabled = false;
+        document.querySelector('.checkAnswerButton').disabled = true;
+        numberOfQuestions++;
+
+        document.querySelector('.input').value == firstMultiplier * secondMultiplier ?
+            (document.querySelector('div:last-of-type')
+                    .append(document.createElement('p')
+                        .textContent = `Правильна відповідь!`),
+                    progress++
+            )
+            :
+            (document.querySelector('div:last-of-type')
+                    .append(document.createElement('p')
+                        .textContent = `Помилка, правильна відповідь <<${firstMultiplier * secondMultiplier}>>!`)
+            );
+        setStatisticLabel(progress, numberOfQuestions);
+    }
+
+    function nextTask(e) {
+        e.target.disabled = true;
+        firstMultiplier = randomInteger(2, 9);
+        secondMultiplier = randomInteger(2, 9);
+        setExpressionLabel(firstMultiplier, secondMultiplier);
+        document.querySelector('div:last-of-type').innerHTML = '';
+        document.querySelector('.checkAnswerButton').disabled = false;
+        document.querySelector('.input').disabled = false;
+        document.querySelector('.input').value = '';
+        setStatisticLabel(progress, numberOfQuestions);
+    }
+
+
+    let progress = 0;
+    let numberOfQuestions = 0;
+    let firstMultiplier = randomInteger(2, 9);
+    let secondMultiplier = randomInteger(2, 9);
+
+    setExpressionLabel(firstMultiplier, secondMultiplier);
+
+    document.querySelector('.nextQuestion').disabled = true;
+    document.querySelector('.checkAnswerButton').addEventListener('click', onClickAnswer);
+    document.querySelector('.nextQuestion').addEventListener('click', nextTask);
+
+</script>
+</html>

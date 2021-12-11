@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5</title>
+</head>
+<body>
+
+<table border="1" style="margin-bottom: 10px; width: 300px; border-collapse: collapse ">
+    <tr>
+        <td style="width: 100px">Січень</td>
+        <td>
+            <div style=" border: 1px solid black">300</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Лютий</td>
+        <td>
+            <div style=" border: 1px solid black">300</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Березень</td>
+        <td>
+            <div style=" border: 1px solid black">700</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Квітень</td>
+        <td>
+            <div style=" border: 1px solid black">300</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Травень</td>
+        <td>
+            <div style=" border: 1px solid black">500</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Червень</td>
+        <td>
+            <div style=" border: 1px solid black">300</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Липень</td>
+        <td>
+            <div style=" border: 1px solid black">400</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Серпень</td>
+        <td>
+            <div style=" border: 1px solid black">300</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Вересень</td>
+        <td>
+            <div style=" border: 1px solid black">0</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Жовтень</td>
+        <td>
+            <div style=" border: 1px solid black">700</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Листопад</td>
+        <td>
+            <div style=" border: 1px solid black">400</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Грудень</td>
+        <td>
+            <div style=" border: 1px solid black">300</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Сумма</td>
+        <td class="summary" style=" border: 1px solid black;"></td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Среднє</td>
+        <td class="avg" style=" border: 1px solid black;"></td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Мінімальне</td>
+        <td class="min" style=" border: 1px solid black;"></td>
+    </tr>
+    <tr>
+        <td style="width: 100px; ">Максимальне</td>
+        <td class="max" style=" border: 1px solid black;"></td>
+    </tr>
+</table>
+<button>Обчислити</button>
+</body>
+<script>
+    function setDataToTable() {
+        function getSummaryValues(profitValues) {
+            return profitValues.reduce((sum, current) => sum += +current, 0);
+        }
+
+        let profitValues = [];
+        document.querySelectorAll('table>tbody>tr>td>div').forEach(item => profitValues.push(item.textContent));
+        document.querySelector('.summary').textContent = getSummaryValues(profitValues);
+        document.querySelector('.avg').textContent = (getSummaryValues(profitValues) / profitValues.length).toString();
+        document.querySelector('.min').textContent = (Math.min(...profitValues)).toString();
+        document.querySelector('.max').textContent = (Math.max(...profitValues)).toString();
+    }
+
+    document.querySelector('button').addEventListener('click', setDataToTable);
+
+</script>
+</html>

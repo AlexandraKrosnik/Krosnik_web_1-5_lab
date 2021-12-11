@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="module" src="lab4lib.js"></script>
+    <style>
+        table,
+        th,
+        td
+        {
+            border: 1px solid darkgray;
+            border-collapse: collapse;
+        }
+        th {
+            background-color: lightgray;
+        }
+
+        td {
+            padding: 0 5px 0;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+        <table >
+            <tr>
+                <th>Завдання</th>
+                <th></th>
+                <th>Результат</th>
+            </tr>
+            <tr>
+                <td>Завдання № 1. Виведення поточної дати та часу</td>
+                <td><button class="takeFormatDate">Виконати</button></td>
+                <td class="formatDateArea"></td>
+            </tr>
+
+            <tr>
+                <td>Завдання №2. Виведення дян тижня</td>
+                <td><button class="getWeekDay">Виконати</button></td>
+                <td class="weekDay"></td>
+            </tr>
+        </table>
+
+        <input type="text" class="daysAgo"/>
+</body>
+</html>

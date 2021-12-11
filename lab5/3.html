@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="inputWrapper" style="margin-bottom: 20px">
+    <input type="checkbox" id="item1" class="checkBox" value="Ukraine">
+    <label for="item1">Ukraine</label><br/>
+    <input type="checkbox" id="item2" class="checkBox" value="English">
+    <label for="item2">English</label><br/>
+    <input type="checkbox" id="item3" class="checkBox" value="Spanish">
+    <label for="item3">Spanish</label><br/>
+</div>
+<button class="buttonOK">OK</button>
+
+</body>
+<script>
+    function handleClick(e) {
+        document.querySelector('p').textContent = '';
+        document.querySelectorAll('.checkBox')
+            .forEach(item => item.checked ? document.querySelector('p').innerHTML += item.value + ' ' : item)
+    }
+
+
+    document.querySelector('.inputWrapper').append(document.createElement('p'));
+    document.querySelector('.buttonOK').addEventListener('click', handleClick);
+</script>
+</html>

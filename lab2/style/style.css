@@ -1,0 +1,54 @@
+/* TASK 3 */
+.calc {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.calc__label:not(:last-child) {
+  margin-bottom: 15px;
+}
+.calc__input {
+  outline: none;
+  border: 1px solid rgb(194, 194, 255);
+  border-radius: 4px;
+  padding: 5px 5px;
+}
+.calc__input:focus,
+.calc__input:hover {
+  border: 1px solid rgb(35, 136, 219);
+}
+.button {
+  /*margin-bottom: 15px;*/
+  background-color: rgb(35, 136, 219);
+  border: 1px solid blue;
+  border-radius: 4px;
+  color: aliceblue;
+  padding: 5px 20px;
+}
+
+/* TASK7 */
+.table {
+  width: 90%;
+  border-collapse: collapse;
+  border: 2px solid rgb(35, 136, 219);
+  margin: 0 auto;
+}
+.table__row--head {
+  border: 2px solid rgb(35, 136, 219);
+}
+.table__col {
+  border: 1px solid rgb(35, 136, 219);
+  text-align: center;
+  padding: 6px;
+}
+.button__task7 {
+  display: block;
+  margin-bottom: 40px;
+}
+.textarea {
+  width: 40%;
+  height: 200px;
+  resize: none;
+  margin-bottom: 10px;
+}
